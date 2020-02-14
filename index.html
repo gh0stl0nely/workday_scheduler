@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Workday Agenda</title>
+</head>
+<body>
+    
+    <main class="align-middle">
+        <h1 style="margin-top: 20px;" id="current-date"></h1>
+        <h1 style="margin-top: 20px;" id="current-time"></div>
+        <!-- <h1 style="margin-top: 20px;">H : M : S</div> -->
+    </main>
+
+    <hr style="width: 50%; margin: 0 auto; margin-top: 30px; border-color: rgb(61, 45, 45);">
+
+    <!--This is where do scheduler is-->
+    <section id="schedule" style="margin-top: 20px;">
+        <div id="8">
+            <div id="time" class="time-slot">8 AM</div>
+            <div class="task">
+                <button type="button" class="btn btn-lg edit-btn" data-toggle="modal" data-target="#myModal">Add/Edit</button>
+            </div>        
+        </div>
+        <div id="9">
+                <div id="time" class="time-slot">9 AM</div>
+                <div class="task">
+                    <button type="button" class="btn btn-lg edit-btn" data-toggle="modal" data-target="#myModal">Add/Edit</button>
+                </div>        
+        </div>
+        <div id="10">
+                <div id="time" class="time-slot">10 AM</div>
+                <div class="task">    
+                    <button type="button" class="btn btn-lg edit-btn" data-toggle="modal" data-target="#myModal">Add/Edit</button>
+                </div>        
+        </div>    
+        <div id="11">
+                <div id="time" class="time-slot">11 AM</div>
+                <div class="task">
+                    
+                    <button type="button" class="btn btn-lg edit-btn" data-toggle="modal" data-target="#myModal">Add/Edit</button>
+                </div>        
+        </div>
+        <div id="12">
+                <div id="time" class="time-slot">12 AM</div>
+                <div class="task">
+                    
+                    <button type="button" class="btn btn-lg edit-btn" data-toggle="modal" data-target="#myModal">Add/Edit</button>
+                </div>        
+        </div>
+        <div id="13">
+                <div id="time" class="time-slot">1 PM</div>
+                <div class="task">
+                    
+                    <button type="button" class="btn btn-lg edit-btn" data-toggle="modal" data-target="#myModal">Add/Edit</button>
+                </div>        
+        </div>
+    
+        <div id="14">
+                <div id="time" class="time-slot">2 PM</div>
+                <div class="task">
+                    
+                    <button type="button" class="btn btn-lg edit-btn" data-toggle="modal" data-target="#myModal">Add/Edit</button>
+                </div>        
+        </div>
+        <div id="15">
+                <div id="time" class="time-slot">3 PM</div>
+                <div class="task">
+                    
+                    <button type="button" class="btn btn-lg edit-btn" data-toggle="modal" data-target="#myModal">Add/Edit</button>
+                </div>        
+        </div>
+        <div id="16">
+                <div id="time" class="time-slot">4 PM</div>
+                <div class="task">
+                    <button type="button" class="btn btn-lg edit-btn" data-toggle="modal" data-target="#myModal">Add/Edit</button>
+                </div>        
+        </div>
+    
+        <div id="17">
+                <div id="time" class="time-slot">5 PM</div>
+                <div class="task">
+                    
+                    <button type="button" class="btn btn-lg edit-btn" data-toggle="modal" data-target="#myModal">Add/Edit</button>
+                </div>        
+        </div>
+        <div id="18">
+                <div id="time" class="time-slot">9 PM</div>
+                <div class="task">
+                    <p>ok</p>
+                    <button type="button" class="btn btn-lg edit-btn" data-toggle="modal" data-target="#myModal">Add/Edit</button>
+                </div>        
+        </div>
+        <div id="23">
+                <div id="time" class="time-slot">10 PM</div>
+                <div class="task">
+                    <p>Ok</p>        
+                    
+                    <button type="button" class="btn btn-lg edit-btn" data-toggle="modal" data-target="#myModal">Add/Edit</button>
+                </div>        
+        </div>
+    
+    
+    
+    
+    </section>
+
+    <div class="container">
+
+            <!-- Trigger the modal with a button -->
+          
+            <!-- Modal -->
+            <div class="modal" id="myModal" role="dialog">
+              <div class="modal-dialog">
+              
+                <!-- Modal content-->
+                <div class="modal-content">
+    
+                  <div class="modal-header">
+                    <span id="modal-time">Time: <span id="specific-time"></span></span>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  
+                  <div class="modal-body">
+                    <button id="add-task" style="display:block; padding: 5px; margin-bottom: 10px;">+</button>
+                    <div id="new-content">
+                        
+                    </div>
+                    <button id="modal-save" style="margin-top: 10px; padding: 5px; color: black; display: block;">Save</button>
+                  </div>
+    
+                </div>
+                
+              </div>
+            </div>
+            
+    </div>
+    
+    <script src="logic.js"></script>
+</body>
+</html>
