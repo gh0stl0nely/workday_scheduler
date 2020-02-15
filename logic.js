@@ -45,7 +45,7 @@ $(document).ready(function(){
     var timerDate = setInterval(updateDate, 0); //Update the Date
     var timerTime = setInterval(updateTime, 0); // Update time Every second
     var hourChecker = setInterval(checkHourPassed, 0); // Render color if passed, and edit button not clickable
-    var dayChecker = setInterval(checkDayEnd, 10000); // Check if the day has passed, if they do, reset everything
+    var dayChecker = setInterval(checkDayEnd, 1000); // Check if the day has passed, if they do, reset everything
     
     $('.edit-btn').on('click', function(){
         //Clear all content from modal first
@@ -133,9 +133,10 @@ function checkDayEnd(){
     // If hour is 0 then reset everything?
     // Select the section id, and go through entire thing and set inner HTML and ""
     var current_hour = new Date().getHours();
-    var current_min = new Date().getMinutes();
+    var current_minute = new Date().getMinutes();
     
-    if(current_hour == 0 && current_min == 0){
+    //After a new day
+    if(current_hour === 0 && current_minute === 0){
         resetDay();
     }
 
