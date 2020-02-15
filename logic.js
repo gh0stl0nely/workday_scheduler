@@ -45,7 +45,7 @@ $(document).ready(function(){
     var timerDate = setInterval(updateDate, 0); //Update the Date
     var timerTime = setInterval(updateTime, 0); // Update time Every second
     var hourChecker = setInterval(checkHourPassed, 0); // Render color if passed, and edit button not clickable
-    var dayChecker = setInterval(checkDayEnd, 10000); // Check if the day has passed, if they do, reset everything ;) 
+    var dayChecker = setInterval(checkDayEnd, 10000); // Check if the day has passed, if they do, reset everything
     
     $('.edit-btn').on('click', function(){
         //Clear all content from modal first
