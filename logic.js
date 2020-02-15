@@ -1,23 +1,52 @@
-// *** RESET DAY IS NOT WRITTEN *** PLEASE LOOK AT IT AGAIN
-// ^^^^^^^^^^^^^^^^^^^^^
-// Task to be done
-// 1) Write Reset Function completely
-// 2) Create relationship between edit btn and modal save
-// Ideally Edit Btn would reflect what is shown in the modal
-// 3) Write DisplayDataFromLocalStorage() to display SCHEDULE ONLY when logged on
+function displayStoredData(){
+    
+    var time_slot = $('.time-slot'); // Select time list [8AM] [9AM]
 
-// DisplayDataFromLocalStorage()
+    for(var i = 0; i < time_slot.length; i++){
+        var time = time_slot[i].innerHTML; //8AM 
+
+        // Find the list in local storage
+        var input_list_from_storage = JSON.parse(localStorage.getItem(time));
+
+        if(!input_list_from_storage){
+            continue;
+        }
+
+        displayOnSchedule(time,time_slot, input_list_from_storage);
+    }   
+}
+
+//Helper
+function displayOnSchedule(time, time_slot,list){
+     // time is the current time like "8AM"
+    var correct_time_slot; // This is a correct div
+
+     //Find the correct div
+     time_slot.each(function(){
+         if($(this).text() == time){
+             correct_time_slot = $(this);
+         }
+     })
+
+    var correct_task = correct_time_slot.next()// class Task
+    var button = correct_task.children().last();
+    
+    for(var j = 0; j < list.length;j++){
+        var p = $('<p></p>');
+        p.text(list[j]);
+        p.insertBefore(button);
+    }
+}
+
 
 $(document).ready(function(){
+    displayStoredData();
 
-    var timerDate = setInterval(updateDate, 0);
-    var timerTime = setInterval(updateTime, 0);
-    var hourChecker = setInterval(checkHourPassed, 0); // Render Them color if passed, and edit button not clickable
-    var dayChecker = setInterval(checkDayEnd, 1000); // Check if the day has passed, if they do, reset everything ;) 
-
-    // Edit Button will first find the time from the parent id="time" and display it on id="specific-time"
-    // Maybe also add event listener to the save button as well? 
-
+    var timerDate = setInterval(updateDate, 0); //Update the Date
+    var timerTime = setInterval(updateTime, 0); // Update time Every second
+    var hourChecker = setInterval(checkHourPassed, 0); // Render color if passed, and edit button not clickable
+    var dayChecker = setInterval(checkDayEnd, 10000); // Check if the day has passed, if they do, reset everything ;) 
+    
     $('.edit-btn').on('click', function(){
         //Clear all content from modal first
         $('#new-content').text('');
@@ -41,7 +70,7 @@ $(document).ready(function(){
         // Loop through it to append each of them into second
         // Div of timeBlock (YOU NEED TO CONNECT IT WITH TITLE)
 
-        // $('#myModal').modal('hide');
+        $('#myModal').modal('hide');
        
 
         // First, get the children of the id="new-content"
@@ -73,7 +102,6 @@ $(document).ready(function(){
        
 
         var correct_task = correct_time_slot.next()// class Task
-        // var untilBtn = correct_task.children().nextUntil('button'); //Select all the p until button
         var button = correct_task.children().last();
         
         button.prevAll().each(function(){
@@ -85,9 +113,11 @@ $(document).ready(function(){
             p.text(input_value_list[j]);
             p.insertBefore(button);
         }
-     
-        
 
+
+        // Save in local storage "8 AM": [input value from input_value];
+        localStorage.setItem(time, JSON.stringify(input_value_list));
+    
     })
 
     // The + icon in the modal can now add task
@@ -103,12 +133,19 @@ function checkDayEnd(){
     // If hour is 0 then reset everything?
     // Select the section id, and go through entire thing and set inner HTML and ""
     var current_hour = new Date().getHours();
+    var current_min = new Date().getMinutes();
     
-    if(current_hour == 0){
-        // Set everything to 0
+    if(current_hour == 0 && current_min == 0){
         resetDay();
     }
 
+} 
+
+function resetDay(){
+    // Remove all content from the previous day
+    $("p").remove();
+    // Clear local storage so its a new day
+    localStorage.clear();
 }
 
 function checkHourPassed(){
@@ -178,6 +215,7 @@ function updateDate(){
     $('#current-date').text(string);
 }
 
+
 // Helper
 
 // Just make sure day is in word (i.e Monday)
@@ -204,17 +242,6 @@ function myGetMonth(current){
     }
     
     return month_object[current.getMonth()];
-}
-
-// 
-function resetDay(){
-    var schedule = document.getElementById('schedule');
-    var time_blocks = schedule.children;
-    for(var i = 0; i < time_blocks.length; i++){
-        time_blocks[i].getElementsByTagName('div')[1].innerHTML = "";
-        // Should we update the modal content (new-content) as well?
-        // Maybe update localStorage for modal? to empty?
-    }
 }
 
 function storeInputValue(p_text, prevPs){
