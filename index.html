@@ -15,8 +15,16 @@
     <main class="align-middle">
         <h1 style="margin-top: 20px;" id="current-date"></h1>
         <h1 style="margin-top: 20px;" id="current-time"></div>
-        <!-- <h1 style="margin-top: 20px;">H : M : S</div> -->
     </main>
+
+    <div style="text-align: center;">
+        <div class="box" style="background-color: grey;"></div>
+        <span>Passed</span>
+        <div class="box"></div>
+        <span>Current</span>
+        <div class="box" style="background-color:greenyellow;"></div>
+        <span>Future</span>
+    </div>
 
     <hr style="width: 50%; margin: 0 auto; margin-top: 30px; border-color: rgb(61, 45, 45);">
 
@@ -25,7 +33,7 @@
         <div id="8">
             <div id="time" class="time-slot">8 AM</div>
             <div class="task">
-                <button type="button" class="btn btn-lg edit-btn" data-toggle="modal" data-target="#myModal">Add/Edit</button>
+                <button type="button" class="btn edit-btn" data-toggle="modal" data-target="#myModal">Add/Edit</button>
             </div>        
         </div>
         <div id="9">
@@ -91,19 +99,27 @@
                 </div>        
         </div>
         <div id="18">
-                <div id="time" class="time-slot">9 PM</div>
+                <div id="time" class="time-slot">6 PM</div>
                 <div class="task">
-                    <p>ok</p>
+                    
+                    <button type="button" class="btn btn-lg edit-btn" data-toggle="modal" data-target="#myModal">Add/Edit</button>
+                </div>        
+        </div>
+        <div id="22">
+                <div id="time" class="time-slot">10 PM</div>
+                <div class="task">
+                            
+                    
                     <button type="button" class="btn btn-lg edit-btn" data-toggle="modal" data-target="#myModal">Add/Edit</button>
                 </div>        
         </div>
         <div id="23">
-                <div id="time" class="time-slot">10 PM</div>
-                <div class="task">
-                    <p>Ok</p>        
+            <div id="time" class="time-slot">11 PM</div>
+            <div class="task">
                     
-                    <button type="button" class="btn btn-lg edit-btn" data-toggle="modal" data-target="#myModal">Add/Edit</button>
-                </div>        
+                
+                <button type="button" class="btn btn-lg edit-btn" data-toggle="modal" data-target="#myModal">Add/Edit</button>
+            </div>        
         </div>
     
     
@@ -128,7 +144,7 @@
                   </div>
                   
                   <div class="modal-body">
-                    <button id="add-task" style="display:block; padding: 5px; margin-bottom: 10px;">+</button>
+                    <button id="add-task" style="display:block; padding: 5px; margin-bottom: 10px; width: 30px;">+</button>
                     <div id="new-content">
                         
                     </div>
